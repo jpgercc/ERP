@@ -1,6 +1,6 @@
 import customtkinter as ctk
 import sqlite3
-
+from tkinter import messagebox  # Certifique-se de importar o messagebox
 
 class HistoricoDeVendas(ctk.CTk):
     def __init__(self):
@@ -67,7 +67,7 @@ class HistoricoDeVendas(ctk.CTk):
                 "----------------------------------------\n")
 
     def delete_sale(self, sale_id):
-        if messagebox.askquestion("Confirmar exclusão", "Deseja mesmo excluir esta venda?"):
+        if messagebox.askquestion("Confirmar exclusão", "Deseja mesmo excluir esta venda?") == 'yes':
             self.cursor.execute("DELETE FROM sales WHERE id = ?", (sale_id,))
             self.conn.commit()
             self.display_sales()  # Update displayed sales after deletion
