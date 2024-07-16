@@ -1,28 +1,32 @@
 import customtkinter as ctk
+import sqlite3
+from tkinter import messagebox
+import pyperclip
+import subprocess
+import sys
 
-# Configuração inicial
-ctk.set_appearance_mode("system")  # Modos: "dark", "light", "system"
-ctk.set_default_color_theme("green")  # Temas: "blue", "green", "dark-blue"
+class Clientes(ctk.CTk):
+    def __init__(self):
+        super().__init__()
 
-# Função de exemplo para os botões
-def on_click_Voltar(button_number):
-    print(f"Botão {button_number} clicado!")
+        ctk.set_appearance_mode("system")  # Modos: "dark", "light", "system"
+        ctk.set_default_color_theme("green")  # Temas: "blue", "green", "dark-blue"
 
-# Criação da janela principal
-root = ctk.CTk()
-root.title("Biss Maneger - Início")
-root.geometry("800x500")
+        self.title("Biss Manager - Produtos")
+        self.geometry("1000x500")
+        self.iconbitmap('beaver.ico')
 
-# Frame no topo da janela para alinhar os botões
-top_frame = ctk.CTkFrame(root)
-top_frame.pack(side="top", fill="x", pady=10)
+        #BOTOES CTK
+        self.main = ctk.CTkButton(self, text="Voltar ao Início", command=self.button_main)
+        self.main.pack(side="right", pady=10)
 
-# Criação dos botões
+#DEF BOTOES
+    def button_main(self):
+        root = self.winfo_toplevel()
+        subprocess.Popen([sys.executable, "main.py"])
+        root.destroy()
 
-button_voltar = ctk.CTkButton(top_frame, text="Voltar ao Início", command=lambda: on_button_click(1))
-button_voltar.pack(side="right", padx=30)
-
-#
-
-# Loop principal da aplicação
-root.mainloop()
+#LOOP
+if __name__ == "__main__":
+    app = Clientes()
+    app.mainloop()

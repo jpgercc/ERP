@@ -2,8 +2,6 @@ import customtkinter as ctk
 import sqlite3
 from tkinter import messagebox
 import pyperclip
-import subprocess
-import sys
 
 class InventoryApp(ctk.CTk):
     def __init__(self):
@@ -12,22 +10,18 @@ class InventoryApp(ctk.CTk):
         ctk.set_appearance_mode("system")  # Modos: "dark", "light", "system"
         ctk.set_default_color_theme("green")  # Temas: "blue", "green", "dark-blue"
 
-        self.title("Biss Manager - Produtos")
+
+        self.title("Biss Manager - Funcionários")
         self.geometry("1000x500")
         self.iconbitmap('beaver.ico')
 
-
         # Connect to the database
-        self.conn = sqlite3.connect("products.db")
+        self.conn = sqlite3.connect("funcionarios.db")
         self.cursor = self.conn.cursor()
         self.create_table()
 
-        #BUTTOM MAIN
-        self.main = ctk.CTkButton(self, text="Voltar ao Início", command=self.button_main)
-        self.main.pack(side="right", pady=10)
-
         # Create the add product button
-        self.add_product_button = ctk.CTkButton(self, text="Adicionar Produto", command=self.show_add_product_form)
+        self.add_product_button = ctk.CTkButton(self, text="Adicionar Funcionário", command=self.show_add_product_form)
         self.add_product_button.pack(pady=10)
 
         # Create a scrollable frame for product listing
@@ -50,18 +44,10 @@ class InventoryApp(ctk.CTk):
         """)
         self.conn.commit()
 
-    def button_main(self):
-        root = self.winfo_toplevel()
-        subprocess.Popen([sys.executable, "main.py"])
-        root.destroy()
-
-
     def show_add_product_form(self):
-
         self.add_product_window = ctk.CTkToplevel(self)
-        self.add_product_window.attributes('-topmost', True)
-        self.add_product_window.title("Biss Manager - Adicionar Produto")
-        self.add_product_window.geometry("1000x500")
+        self.add_product_window.title("Adicionar Produto")
+        self.add_product_window.geometry("400x400")
 
         # Product ID
         self.product_id_label = ctk.CTkLabel(self.add_product_window, text="ID do Produto:")
@@ -88,7 +74,7 @@ class InventoryApp(ctk.CTk):
         self.quantity_entry.pack(pady=5)
 
         # Supplier Contact
-        self.supplier_contact_label = ctk.CTkLabel(self.add_product_window, text="Contato do Fornecedor:")
+        self.supplier_contact_label = ctk.CTkLabel(self.add_product_window, text="Contato do Fornecedor (Telefone):")
         self.supplier_contact_label.pack(pady=5)
         self.supplier_contact_entry = ctk.CTkEntry(self.add_product_window)
         self.supplier_contact_entry.pack(pady=5)
@@ -97,16 +83,10 @@ class InventoryApp(ctk.CTk):
         self.add_product_button = ctk.CTkButton(self.add_product_window, text="Adicionar", command=self.add_product)
         self.add_product_button.pack(pady=20)
 
-
-
     def show_edit_product_form(self, product):
         self.edit_product_window = ctk.CTkToplevel(self)
-        # Set the window to be always on top
-        self.edit_product_window.attributes('-topmost', True)
         self.edit_product_window.title("Alterar Produto")
-        self.edit_product_window.geometry("1000x500")
-        #self.add_product_window.grab_set()
-
+        self.edit_product_window.geometry("400x450")
 
         # Product ID
         self.product_id_label = ctk.CTkLabel(self.edit_product_window, text="ID do Produto:")

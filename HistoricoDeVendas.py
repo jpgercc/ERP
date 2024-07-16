@@ -1,12 +1,16 @@
 import customtkinter as ctk
 import sqlite3
-from tkinter import messagebox  # Certifique-se de importar o messagebox
+from tkinter import messagebox
 
 class HistoricoDeVendas(ctk.CTk):
     def __init__(self):
         super().__init__()
-        self.title("Histórico de Vendas")
-        self.geometry("600x400")
+        ctk.set_appearance_mode("system")  # Modos: "dark", "light", "system"
+        ctk.set_default_color_theme("green")  # Temas: "blue", "green", "dark-blue"
+
+        self.title("Biss Manager - Produtos")
+        self.geometry("1000x500")
+        self.iconbitmap('beaver.ico')
 
         # Create a scrollable frame
         self.scrollable_frame = ctk.CTkScrollableFrame(self)
@@ -29,7 +33,7 @@ class HistoricoDeVendas(ctk.CTk):
 
     def search_sales(self):
         query = f"%{self.search_entry.get()}%"
-        self.cursor.execute("SELECT * FROM sales WHERE client_name LIKE ? OR client_cpf LIKE ?", (query, query))
+        self.cursor.execute("SELECT * FROM sales WHERE client_name LIKE ? OR client_cpf LIKE ? OR purchase_date LIKE ?", (query, query, query))
         sales = self.cursor.fetchall()
         self.display_sales(sales)
 
@@ -56,14 +60,25 @@ class HistoricoDeVendas(ctk.CTk):
 
     def format_sale_info(self, sale):
         # Function to format sale details in a reusable way
-        return (f"Client Name: {sale[1]}\n"
-                f"Client CPF: {sale[2]}\n"
-                f"Company CNPJ: {sale[3]}\n"
-                f"Items:\n{sale[4]}\n"
-                f"Total Amount: ${sale[5]:.2f}\n"
-                f"Payment Method: {sale[6]}\n"
-                f"Installments: {sale[7]}\n"
-                f"Invoice: {sale[8]}\n"
+        client_name = sale[1]
+        client_cpf = sale[2]
+        company_cnpj = sale[3]
+        items = sale[4]
+        total_amount = sale[5]
+        payment_method = sale[6]
+        installments = sale[7]
+        invoice = sale[8]
+        purchase_date = sale[9] if len(sale) > 9 else "N/A"  # Handle missing purchase_date
+
+        return (f"Client Name: {client_name}\n"
+                f"Client CPF: {client_cpf}\n"
+                f"Company CNPJ: {company_cnpj}\n"
+                f"Items:\n{items}\n"
+                f"Total Amount: ${total_amount:.2f}\n"
+                f"Payment Method: {payment_method}\n"
+                f"Installments: {installments}\n"
+                f"Invoice: {invoice}\n"
+                f"Purchase Date: {purchase_date}\n"
                 "----------------------------------------\n")
 
     def delete_sale(self, sale_id):
