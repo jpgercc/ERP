@@ -71,6 +71,14 @@ class CashierApp(ctk.CTk):
         self.item_price_entry = ctk.CTkEntry(self.scrollable_frame)
         self.item_price_entry.pack(pady=5)
 
+        self.item_name_entry.bind("<FocusOut>", self.fill_brand)
+
+        self.item_brand_label = ctk.CTkLabel(self.scrollable_frame, text="Item Brand:")
+        self.item_brand_label.pack(pady=5)
+
+        self.item_brand_entry = ctk.CTkEntry(self.scrollable_frame)
+        self.item_brand_entry.pack(pady=5)
+
         self.item_quantity_label = ctk.CTkLabel(self.scrollable_frame, text="Quantity:")
         self.item_quantity_label.pack(pady=5)
 
@@ -138,6 +146,14 @@ class CashierApp(ctk.CTk):
         if result:
             self.item_price_entry.delete(0, "end")
             self.item_price_entry.insert(0, str(result[0]))
+
+    def fill_brand(self, event=None):
+        item_name = self.item_name_entry.get()
+        self.products_cursor.execute("SELECT brand FROM products WHERE name = ?", (item_name,))
+        result = self.products_cursor.fetchone()
+        if result:
+            self.item_brand_entry.delete(0, "end")
+            self.item_brand_entry.insert(0, str(result[0]))
 
     def add_item(self):
         name = self.item_name_entry.get()
