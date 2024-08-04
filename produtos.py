@@ -14,7 +14,7 @@ class InventoryApp(ctk.CTk):
 
         self.title("Biss Manager - Produtos")
         self.geometry("1000x500")
-        self.iconbitmap('beaver.ico')
+        self.iconbitmap('finalizado.ico')
 
 
         # Connect to the database
@@ -22,9 +22,6 @@ class InventoryApp(ctk.CTk):
         self.cursor = self.conn.cursor()
         self.create_table()
 
-        #BUTTOM MAIN
-        self.main = ctk.CTkButton(self, text="Voltar ao Início", command=self.button_main)
-        self.main.pack(side="right", pady=10)
 
         # Create the add product button
         self.add_product_button = ctk.CTkButton(self, text="Adicionar Produto", command=self.show_add_product_form)
@@ -52,10 +49,6 @@ class InventoryApp(ctk.CTk):
         """)
         self.conn.commit()
 
-    def button_main(self):
-        root = self.winfo_toplevel()
-        subprocess.Popen([sys.executable, "main.py"])
-        root.destroy()
 
 
     def show_add_product_form(self):

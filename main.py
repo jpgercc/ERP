@@ -15,7 +15,7 @@ ctk.set_default_color_theme("green")  # Temas: "blue", "green", "dark-blue"
 root = ctk.CTk()
 root.title("Biss Manager - Início")
 root.geometry("1000x500")
-root.iconbitmap('beaver.ico')
+root.iconbitmap('finalizado.ico')
 
 # Frame no topo da janela para alinhar os botões
 top_frame = ctk.CTkFrame(root)
@@ -26,6 +26,10 @@ def on_button_click(button_number):
     print(f"Botão {button_number} clicado!")
 
 # Função para abrir PAGINAS
+
+def open_funcionarios_page():
+    subprocess.Popen([sys.executable, "funcionarios.py"])
+
 def open_clientes_page():
     subprocess.Popen([sys.executable, "clientes.py"])
 
@@ -48,19 +52,19 @@ button2.pack(side="right", padx=30)
 button3 = ctk.CTkButton(top_frame, text="Produtos", command=open_produtos_page)
 button3.pack(side="right", padx=30)
 
-button4 = ctk.CTkButton(top_frame, text="Funcionários", command=lambda: on_button_click(4))
+button4 = ctk.CTkButton(top_frame, text="Funcionários", command=open_funcionarios_page)
 button4.pack(side="right", padx=30)
 
 button5 = ctk.CTkButton(top_frame, text="Clientes", command=open_clientes_page)
 button5.pack(side="right", padx=30)
 
 # Carregar a imagem usando PIL
-image_path = "./castoreiro.png"  # Altere para o caminho da sua imagem
+image_path = "./final.png"  # Altere para o caminho da sua imagem
 image = Image.open(image_path)
 image = image.resize((900, 900), Image.LANCZOS)  # Redimensione a imagem se necessário
 
 # Converter a imagem para CTkImage
-ctk_image = ctk.CTkImage(dark_image=image, size=(300, 200))
+ctk_image = ctk.CTkImage(dark_image=image, size=(300, 300))
 
 # Criar um CTkLabel para exibir a imagem
 image_label = ctk.CTkLabel(root, image=ctk_image, text="")

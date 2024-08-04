@@ -14,7 +14,7 @@ class Clientes(ctk.CTk):
 
         self.title("Biss Manager - Produtos")
         self.geometry("1000x500")
-        self.iconbitmap('beaver.ico')
+        self.iconbitmap('finalizado.ico')
 
         #BOTOES CTK
         self.main = ctk.CTkButton(self, text="Voltar ao Início", command=self.button_main)

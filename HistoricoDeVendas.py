@@ -10,7 +10,7 @@ class HistoricoDeVendas(ctk.CTk):
 
         self.title("Biss Manager - Produtos")
         self.geometry("1000x500")
-        self.iconbitmap('beaver.ico')
+        self.iconbitmap('finalizado.ico')
 
         # Create a scrollable frame
         self.scrollable_frame = ctk.CTkScrollableFrame(self)

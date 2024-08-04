@@ -17,7 +17,7 @@ class CashierApp(ctk.CTk):
 
         self.title("Biss Manager - Realizar Venda")
         self.geometry("1000x500")
-        self.iconbitmap('beaver.ico')
+        self.iconbitmap('finalizado.ico')
 
         self.items = []
 
@@ -36,7 +36,7 @@ class CashierApp(ctk.CTk):
         self.conn = sqlite3.connect("sales.db")
         self.cursor = self.conn.cursor()
 
-        # Create a table for sales
+        # CONFERIR, BOTAR ESSE CÓDIGO EM VENDAS.PY
         self.cursor.execute('''CREATE TABLE IF NOT EXISTS sales (
             id INTEGER PRIMARY KEY,
             client_name TEXT,
