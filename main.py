@@ -14,7 +14,7 @@ ctk.set_default_color_theme("green")  # Temas: "blue", "green", "dark-blue"
 #self.iconbitmap(logo_image)
 root = ctk.CTk()
 root.title("Biss Manager - Início")
-root.geometry("1000x500")
+root.geometry("1200x600")
 root.iconbitmap('finalizado.ico')
 
 # Frame no topo da janela para alinhar os botões
@@ -57,6 +57,9 @@ button4.pack(side="right", padx=30)
 
 button5 = ctk.CTkButton(top_frame, text="Clientes", command=open_clientes_page)
 button5.pack(side="right", padx=30)
+
+button1 = ctk.CTkButton(top_frame, text="Sobre a Empresa", command=open_vendas_page)
+button1.pack(side="right", padx=30)
 
 # Carregar a imagem usando PIL
 image_path = "./final.png"  # Altere para o caminho da sua imagem
