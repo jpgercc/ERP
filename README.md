@@ -1,6 +1,7 @@
 # VendaLojas
+<h1>Para baixar todas bibliotecas do App:</h1>
 
-`pip install` oq tiver importado neah
+`pip install -r requirements.txt`
 
 ---
 ---
