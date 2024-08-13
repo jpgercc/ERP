@@ -3,11 +3,12 @@
 
 `pip install -r requirements.txt`
 
----
----
+( <i>No arquivo requirements.txt esta listado todas as bibliotecas necessarias.</i> )
+
+<br>
 ---
 
-<h2>À fazer:</h2>
+<h2>À fazer: (Desatualizado)</h2>
 
 CRIAR BACKUP automático diário
 
