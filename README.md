@@ -1,6 +1,6 @@
 # VendaLojas
 <h1>Para baixar todas bibliotecas do App:</h1>
-
+NAO TESTADO
 `pip install -r requirements.txt`
 
 ( <i>No arquivo requirements.txt esta listado todas as bibliotecas necessarias.</i> )
