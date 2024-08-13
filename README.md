@@ -9,6 +9,7 @@
 ---
 
 <h2>À fazer: (Desatualizado)</h2>
+PIX
 
 CRIAR BACKUP automático diário
 
