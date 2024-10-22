@@ -1,5 +1,5 @@
 # VendaLojas
-<p><i>Eu parei de desenvolver isso pois eu acredito ser muito melhor criar a mesma coisa usando Electron. Mas, espero que esse código l1x0 sirva de algo para alguém.</i></p>
+<p><b><i>Eu parei de desenvolver isso pois eu acredito ser muito melhor criar a mesma coisa usando Electron. Mas, espero que esse código l1x0 sirva de algo para alguém.</i></b></p>
 <h1>Para baixar todas bibliotecas do App:</h1>
 NAO TESTADO
 `pip install -r requirements.txt`
