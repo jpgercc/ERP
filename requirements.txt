@@ -1,11 +1,4 @@
 customtkinter
-sqlite3
-subprocess
-tkinter
-reportlab.lib.pagesizes
-reportlab.pdfgen
-sys
-datetime
-os
+reportlab
+Pillow
 pyperclip
-PIL
