@@ -70,9 +70,6 @@ saldo devedor, confirmar a compra
 
 ------------------------------------------------------------
 
-CHAVE DE PRODUTO
-
-PREÇO 1 chave = MIN 50 MAX 100
 
 
 
